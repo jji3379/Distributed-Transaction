@@ -2,7 +2,6 @@ package com.example.monolithic.order.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
@@ -20,7 +19,11 @@ public class Order {
         this.status = OrderStatus.CREATED;
     }
 
-    private enum OrderStatus {
+    public void complete() {
+        status = OrderStatus.COMPLETED;
+    }
+
+    public enum OrderStatus {
         CREATED, COMPLETED
     }
 }
