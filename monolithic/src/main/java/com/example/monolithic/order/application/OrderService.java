@@ -38,7 +38,7 @@ public class OrderService {
     }
 
     @Transactional
-    public void placeOrder(PlaceOrderCommand command) {
+    public void placeOrder(PlaceOrderCommand command) throws InterruptedException {
         Order order = orderRepository.findById(command.orderId())
                 .orElseThrow(() -> new RuntimeException("주문정보가 존재하지 않습니다."));
 
@@ -59,5 +59,8 @@ public class OrderService {
 
         order.complete();
         orderRepository.save(order);
+
+        System.out.println("결제 완료!!!");
+        Thread.sleep(3000);
     }
 }
