@@ -48,8 +48,19 @@ public class PointController {
         }
     }
 
+    int count = 0;
+
     @PostMapping("/point/cancel")
-    public void cancel(@RequestBody PointReserveCancelRequest request) {
+    public void cancel(@RequestBody PointReserveCancelRequest request) throws InterruptedException {
+        System.out.println("진입!!!");
+        if(count % 2 == 0) {
+            count++;
+            // 타임아웃 테스트
+//            Thread.sleep(2000);
+
+            throw new RuntimeException("테스트를 위한 오류!");
+        }
+
         String key = "point:" + request.requestId();
         boolean acquiredLock = redisLockService.tryLock(key, request.requestId());
 
