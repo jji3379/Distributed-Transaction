@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "order_items")
-@Getter
 @NoArgsConstructor
 public class OrderItem {
     @Id
@@ -23,5 +22,13 @@ public class OrderItem {
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public Long getQuantity() {
+        return quantity;
     }
 }
