@@ -1,9 +1,9 @@
 package com.example.product.controller;
 
 import com.example.product.application.ProductFacadeService;
-import com.example.product.application.ProductService;
 import com.example.product.application.RedisLockService;
 import com.example.product.application.dto.ProductReserveResult;
+import com.example.product.controller.dto.ProductReserveConfirmRequest;
 import com.example.product.controller.dto.ProductReserveRequest;
 import com.example.product.controller.dto.ProductReserveResponse;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +33,21 @@ public class ProductController {
         } finally {
             redisLockService.releaseLock(key);
         }
+    }
 
+    @PostMapping("/product/confirm")
+    public void confirm(@RequestBody ProductReserveConfirmRequest request) {
+        String key = "product:" + request.requestId();
+        boolean acquiredLock = redisLockService.tryLock(key, request.requestId());
+
+        if (!acquiredLock) {
+            throw new RuntimeException("락 획득에 실패하였습니다.");
+        }
+
+        try {
+            productFacadeService.confirmReserve(request.toCommand());
+        } finally {
+            redisLockService.releaseLock(key);
+        }
     }
 }
