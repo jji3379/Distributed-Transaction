@@ -2,10 +2,10 @@ package com.example.order.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
-@Getter
 public class Order {
 
     @Id
@@ -25,5 +25,9 @@ public class Order {
 
     public enum OrderStatus {
         CREATED, COMPLETED
+    }
+
+    public Long getId() {
+        return id;
     }
 }
