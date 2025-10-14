@@ -1,18 +1,24 @@
 package com.example.point.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "points")
 @NoArgsConstructor
+@Getter
 public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;
+
     private Long amount;
+
+    @Version
+    private Long version;
 
     public Point(Long userId, Long amount) {
         this.userId = userId;
