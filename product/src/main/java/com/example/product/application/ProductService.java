@@ -108,6 +108,11 @@ public class ProductService {
             );
         }
 
+        // 보상 중 예외 발생시 롤백 테스트
+//        if (true) {
+//            throw new RuntimeException("강제 예외 발생");
+//        }
+
         return new ProductBuyCancelResult(totalPrice);
     }
 }
