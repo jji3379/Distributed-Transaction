@@ -55,6 +55,9 @@ public class OrderCoordinator {
             }
 
             orderService.fail(command.orderId());
+
+            // 실패 보상 테스트
+//            throw e;
         }
     }
 }

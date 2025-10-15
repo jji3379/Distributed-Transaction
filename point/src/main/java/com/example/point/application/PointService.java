@@ -77,5 +77,8 @@ public class PointService {
                         PointTransactionHistory.TransactionType.CANCEL
                 )
         );
+
+        // 실패 보상 테스트
+//        throw new RuntimeException("강제로 예외 발생");
     }
 }
