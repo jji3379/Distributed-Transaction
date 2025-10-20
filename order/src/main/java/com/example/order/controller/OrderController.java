@@ -41,7 +41,7 @@ public class OrderController {
         }
 
         try {
-            orderCoordinator.placeOrder(request.toCommand());
+            orderService.placeOrder(request.toCommand());
         } finally {
             redisLockService.releaseLock(lockKey);
         }
