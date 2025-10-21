@@ -28,7 +28,7 @@ public class OrderPlacedConsumer {
             topics = "order-placed",
             groupId = "order-placed-consumer",
             properties = {
-                    "spring.json.value.default.type=com.example.product.consumer.dto"
+                    "spring.json.value.default.type=com.example.product.consumer.dto.OrderPlacedEvent"
             }
     )
     public void handle(OrderPlacedEvent event) {
