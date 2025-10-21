@@ -46,4 +46,8 @@ public class Order {
     public Long getId() {
         return id;
     }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
 }

@@ -7,9 +7,8 @@ import com.example.order.application.dto.CreateOrderResult;
 import com.example.order.controller.dto.CreateOrderRequest;
 import com.example.order.controller.dto.CreateOrderResponse;
 import com.example.order.controller.dto.PlaceOrderRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.order.domain.Order;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OrderController {
@@ -36,7 +35,7 @@ public class OrderController {
 
         boolean lockAcquired = redisLockService.tryLock(lockKey, request.orderId().toString());
 
-        if(!lockAcquired){
+        if (!lockAcquired) {
             throw new RuntimeException("락 획득에 실패하였습니다.");
         }
 
@@ -45,5 +44,10 @@ public class OrderController {
         } finally {
             redisLockService.releaseLock(lockKey);
         }
+    }
+
+    @GetMapping("/order/{id}/status")
+    public Order.OrderStatus getStatus(@PathVariable("id") Long id) {
+        return orderService.getStatus(id);
     }
 }
