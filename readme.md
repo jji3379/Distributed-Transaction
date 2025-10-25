@@ -50,6 +50,8 @@
 
 ## 2. Try-Confirm-Cancel (TCC)
 
+<img width="1542" height="1034" alt="Image" src="https://github.com/user-attachments/assets/74f0c376-bf57-49b9-b2f2-b1b78ad97931" />
+
 ### 개념
 - **비즈니스 레벨 2PC 확장 패턴**
 - 각 서비스가 **Try**, **Confirm**, **Cancel** 단계 구현
@@ -103,6 +105,8 @@
 
 ## 3. SAGA 패턴
 
+<img width="1542" height="1034" alt="Image" src="https://github.com/user-attachments/assets/fda256f7-c606-4249-b9f7-b23762f4c2c7" />
+
 ### 개념
 - **로컬 트랜잭션의 연속 처리 패턴**
 - 각 단계 성공 시 다음 단계 진행, 실패 시 **보상 트랜잭션(Compensation)** 실행
@@ -124,6 +128,11 @@
 - 중앙 **Orchestrator** 가 전체 트랜잭션 흐름 제어
 - 각 서비스는 요청에 응답만 수행
 
+<img width="1542" height="1034" alt="Image" src="https://github.com/user-attachments/assets/041617f4-fae8-4fa3-9c4d-f4976483b74e" />
+
+[ 롤백 하는 도중 실패 시 처리 ] <img width="1542" height="1034" alt="Image" src="https://github.com/user-attachments/assets/a4235f30-63b0-44cb-b209-8ad0eb69c18e" />
+
+
 **장점**
 - 흐름 명확 / 모니터링 용이
 - 조건 분기, 병렬 처리 가능
@@ -144,6 +153,11 @@
 #### Choreography (이벤트 기반)
 - Orchestrator 없이 **각 서비스 간 이벤트 발행/구독**
 - **Event-Driven Architecture(EDA)** 기반
+
+<img width="1319" height="926" alt="Image" src="https://github.com/user-attachments/assets/15768770-2ef8-44ae-ab3c-74458205327b" />
+
+
+[ 실패 처리 ] <img width="1319" height="926" alt="Image" src="https://github.com/user-attachments/assets/a883d0b6-2fc3-4f21-bc9c-749255ace63d" />
 
 **장점**
 - 느슨한 결합
