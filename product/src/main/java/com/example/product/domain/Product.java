@@ -15,6 +15,9 @@ public class Product {
 
     private Long price;
 
+    @Version
+    private Long version;
+
     public Product(Long quantity, Long price) {
         this.quantity = quantity;
         this.price = price;
@@ -30,5 +33,9 @@ public class Product {
         }
 
         this.quantity = this.quantity - quantity;
+    }
+
+    public void cancel(Long quantity) {
+        this.quantity = this.quantity + quantity;
     }
 }
